@@ -45,6 +45,14 @@ namespace TCP_SERVER
 			}
 			mTcpListener = new TcpListener(ipAddr, nPort);
 			mTcpListener.Start();
+
+			mTcpListener.BeginAcceptTcpClient(onCompleteAcceptTcpClient, mTcpListener);
+
+		}
+		void onCompleteAcceptTcpClient(IAsyncResult iar)
+		{
+			TcpListener tcpl = (TcpListener)iar.AsyncState;
+			tcpl.EndAcceptTcpClient(iar);
 		}
 	}
 }
