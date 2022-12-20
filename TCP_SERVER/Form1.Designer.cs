@@ -74,6 +74,7 @@ namespace TCP_SERVER
 			this.BtStartListening.TabIndex = 3;
 			this.BtStartListening.Text = "Start";
 			this.BtStartListening.UseVisualStyleBackColor = true;
+			this.BtStartListening.Click += new System.EventHandler(this.BtStartListening_Click);
 			// 
 			// Form1
 			// 

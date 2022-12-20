@@ -28,5 +28,23 @@ namespace TCP_SERVER
 		{
 
 		}
+
+		private void BtStartListening_Click(object sender, EventArgs e)
+		{
+			IPAddress ipAddr;
+			int nPort;
+
+			if (!int.TryParse(TbPort.Text,out nPort))
+			{
+				nPort = 5555;
+			}
+			if(!IPAddress.TryParse(TbIPAddres.Text,out ipAddr))
+			{
+				MessageBox.Show("Invalid IP addres supplied.");
+				return;
+			}
+			mTcpListener = new TcpListener(ipAddr, nPort);
+			mTcpListener.Start();
+		}
 	}
 }
