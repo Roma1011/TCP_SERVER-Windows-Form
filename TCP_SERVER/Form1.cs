@@ -14,6 +14,7 @@ namespace TCP_SERVER
 	public partial class Form1 : Form
 	{
 		TcpListener mTcpListener;
+		TcpClient mTcpClient;
 		public Form1()
 		{
 			InitializeComponent();
@@ -52,7 +53,14 @@ namespace TCP_SERVER
 		void onCompleteAcceptTcpClient(IAsyncResult iar)
 		{
 			TcpListener tcpl = (TcpListener)iar.AsyncState;
-			tcpl.EndAcceptTcpClient(iar);
+			try
+			{
+				mTcpClient = tcpl.EndAcceptTcpClient(iar);
+			}
+			catch(Exception exc)
+			{
+				MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
